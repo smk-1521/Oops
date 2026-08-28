@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mani Kumar Srinivasan — Full Stack Developer</title>
+<meta name="description" content="Full Stack Developer building accessible, production-grade web and mobile software — React, Laravel, Flutter, Node.js.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#10141C;
+    --bg-elevated:#161C27;
+    --ink:#EDEAE2;
+    --muted:#8B92A3;
+    --amber:#E8A34D;
+    --teal:#4FB0A5;
+    --line: rgba(237,234,226,0.12);
+    --line-strong: rgba(237,234,226,0.22);
+    --maxw: 1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .stamp{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    color:var(--amber);
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .stamp::before{
+    content:"";
+    width:6px; height:6px; border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 0 3px rgba(232,163,77,0.18);
+    flex:none;
+  }
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(16,20,28,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .logo{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    letter-spacing:0.04em;
+    color:var(--ink);
+    text-decoration:none;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo b{color:var(--amber); font-weight:500;}
+  .navlinks{display:flex; gap:32px; list-style:none; margin:0; padding:0;}
+  .navlinks a{
+    font-size:14px; text-decoration:none; color:var(--muted);
+    transition:color 0.2s ease;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{color:var(--ink);}
+  .navlinks a:focus-visible{outline:2px solid var(--amber); outline-offset:4px; border-radius:2px;}
+  .navcta{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    color:var(--bg);
+    background:var(--amber);
+    padding:9px 16px;
+    border-radius:100px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .navcta:hover{filter:brightness(1.08);}
+  .navcta:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+  .menu-btn{display:none; background:none; border:none; color:var(--ink); cursor:pointer; padding:8px;}
+
+  /* HERO */
+  .hero{padding:96px 0 88px; border-bottom:1px solid var(--line);}
+  .hero .stamp{margin-bottom:28px;}
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(40px, 6vw, 68px);
+    line-height:1.04;
+    margin:0 0 6px;
+    letter-spacing:-0.01em;
+  }
+  .role{
+    font-family:'JetBrains Mono', monospace;
+    font-size:15px;
+    color:var(--teal);
+    margin:0 0 26px;
+    letter-spacing:0.01em;
+  }
+  .lede{
+    font-size:18px;
+    color:var(--muted);
+    max-width:560px;
+    margin:0 0 40px;
+  }
+  .lede b{color:var(--ink); font-weight:500;}
+  .cta-row{display:flex; flex-wrap:wrap; gap:12px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:14.5px;
+    font-weight:500;
+    border:1px solid var(--line-strong);
+    transition:border-color 0.2s ease, transform 0.15s ease, background 0.2s ease;
+  }
+  .btn:hover{border-color:var(--amber); transform:translateY(-1px);}
+  .btn:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+  .btn-primary{background:var(--amber); color:var(--bg); border-color:var(--amber);}
+  .btn-primary:hover{filter:brightness(1.06); border-color:var(--amber);}
+
+  section{padding:80px 0; border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:44px;}
+  .section-head .stamp{margin-bottom:14px;}
+  .section-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(28px,3.4vw,36px);
+    margin:0 0 10px;
+  }
+  .section-head p{color:var(--muted); margin:0; max-width:520px;}
+
+  /* HIGHLIGHT PROJECT */
+  .highlight{
+    background:var(--bg-elevated);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:36px;
+  }
+  .highlight-top{display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; align-items:flex-start; margin-bottom:18px;}
+  .highlight h3{font-family:'Fraunces', serif; font-size:24px; font-weight:500; margin:0;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--muted);
+    border:1px solid var(--line-strong);
+    padding:4px 10px;
+    border-radius:100px;
+  }
+  .highlight ul{margin:16px 0 0; padding-left:20px; color:var(--muted); font-size:15px;}
+  .highlight li{margin-bottom:8px;}
+  .highlight li b{color:var(--ink); font-weight:500;}
+
+  /* PROJECT GRID */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+    margin-top:28px;
+  }
+  .card{
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:26px;
+    text-decoration:none;
+    color:inherit;
+    display:block;
+    transition:border-color 0.2s ease, transform 0.15s ease;
+  }
+  .card:hover{border-color:var(--line-strong); transform:translateY(-2px);}
+  .card:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;}
+  .card h4{font-family:'Fraunces', serif; font-size:19px; font-weight:500; margin:0;}
+  .arrow{color:var(--amber); font-size:15px;}
+  .card p{color:var(--muted); font-size:14px; margin:0 0 14px;}
+  .card .tags{gap:6px;}
+  .card .tag{font-size:10.5px; padding:3px 9px;}
+
+  /* SKILLS */
+  .skill-groups{display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:8px;}
+  .skill-group h4{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--teal);
+    margin:0 0 14px;
+  }
+  .skill-group .tags{gap:8px 8px;}
+
+  /* EXPERIENCE */
+  .exp-card{border:1px solid var(--line); border-radius:14px; padding:32px;}
+  .exp-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:18px; align-items:baseline;}
+  .exp-top h3{font-family:'Fraunces', serif; font-size:22px; font-weight:500; margin:0;}
+  .exp-top span{font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--muted);}
+  .exp-card ul{margin:0; padding-left:20px; color:var(--muted); font-size:15px;}
+  .exp-card li{margin-bottom:10px;}
+
+  /* CONTACT / FOOTER */
+  .contact{border-bottom:none; text-align:left;}
+  .contact h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(30px,4vw,44px);
+    margin:0 0 16px;
+    max-width:600px;
+  }
+  .contact p{color:var(--muted); max-width:480px; margin:0 0 32px;}
+  footer{padding:32px 0 48px;}
+  .foot-row{
+    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px;
+  }
+  .foot-links{display:flex; gap:22px; list-style:none; margin:0; padding:0;}
+  .foot-links a{font-size:13.5px; color:var(--muted); text-decoration:none;}
+  .foot-links a:hover{color:var(--ink);}
+  .foot-note{font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted);}
+
+  @media (max-width: 760px){
+    .navlinks{
+      position:fixed; top:64px; left:0; right:0; bottom:0;
+      background:var(--bg);
+      flex-direction:column; gap:0;
+      padding:12px 28px;
+      transform:translateY(-110%);
+      transition:transform 0.25s ease;
+      border-top:1px solid var(--line);
+    }
+    .navlinks.open{transform:translateY(0);}
+    .navlinks li{width:100%; border-bottom:1px solid var(--line);}
+    .navlinks a{display:block; padding:16px 0; font-size:16px;}
+    .navcta{display:none;}
+    .menu-btn{display:block;}
+    .grid{grid-template-columns:1fr;}
+    .skill-groups{grid-template-columns:1fr;}
+    section{padding:56px 0;}
+    .hero{padding:56px 0 56px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">M<b>KS</b>.dev</a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:smanikumar95@gmail.com" class="navcta">Say hello →</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero wrap" style="border-left:none; border-right:none;">
+    <p class="stamp" id="clockStamp">09:14:32 — CHENNAI, IN</p>
+    <h1>Mani Kumar<br>Srinivasan</h1>
+    <p class="role">FULL STACK DEVELOPER — REACT · LARAVEL · FLUTTER · NODE.JS</p>
+    <p class="lede">I build <b>production-grade</b> web and mobile software — from real-time attendance systems to <b>accessibility-first</b> platforms supporting people with disabilities. End-to-end ownership, from first commit to Play Store.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:smanikumar95@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/smanikumar1995" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://www.instagram.com/manikumarsrinivasan/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download résumé ↓</a>
+    </div>
+  </section>
+
+  <section id="work" class="wrap">
+    <div class="section-head">
+      <p class="stamp">09:31 — HIGHLIGHT PROJECT</p>
+      <h2>An HRMS built from scratch</h2>
+      <p>What started as an attendance tracker is now growing into a full payroll platform — still in daily use by a real team.</p>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-top">
+        <h3>Employee Management &amp; Attendance System (HRMS)</h3>
+        <div class="tags">
+          <span class="tag">Flutter</span>
+          <span class="tag">Laravel (Filament)</span>
+          <span class="tag">React</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+      <ul>
+        <li>Deployed a <b>production-grade</b> employee management system for daily attendance, task tracking, and time monitoring — shipped to the Play Store.</li>
+        <li>Built a <b>Flutter mobile app</b> integrated with a <b>Laravel (Filament)</b> admin dashboard.</li>
+        <li>Designed <b>role-based workflows</b> for managers to assign tasks, set deadlines, and approve submissions.</li>
+        <li>Engineered check-in/check-out tracking with break monitoring and real-time time calculations.</li>
+        <li>Automated email workflows for reminders, escalations, and daily EOD reporting.</li>
+        <li>Now expanding into <b>full payroll processing</b>, with unified data models across attendance, leave, and pay.</li>
+      </ul>
+    </div>
+
+    <div class="section-head" style="margin-top:64px;">
+      <p class="stamp">10:02 — KEY PROJECTS</p>
+      <h2>More things I've shipped</h2>
+    </div>
+
+    <div class="grid">
+      <a class="card" href="https://academy.ableaura.com" target="_blank" rel="noopener">
+        <div class="card-top"><h4>AcademyAbleAura</h4><span class="arrow">↗</span></div>
+        <p>Accessibility-first UI for a sports platform serving children with disabilities — listings, onboarding, and galleries.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">AI prototyping</span></div>
+      </a>
+      <a class="card" href="https://ableaura.org" target="_blank" rel="noopener">
+        <div class="card-top"><h4>Able Aura</h4><span class="arrow">↗</span></div>
+        <p>Digital ecosystem for disability support — modular UIs spanning travel, therapy, and housing.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">JavaScript</span></div>
+      </a>
+      <a class="card" href="https://mychild.thecosmichomes.com" target="_blank" rel="noopener">
+        <div class="card-top"><h4>MyChildLife</h4><span class="arrow">↗</span></div>
+        <p>Autism support site — an emotionally supportive UI for parents, with a curated knowledge base.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">Content design</span></div>
+      </a>
+      <a class="card" href="https://thecosmichomes.com" target="_blank" rel="noopener">
+        <div class="card-top"><h4>TheCosmicHomes</h4><span class="arrow">↗</span></div>
+        <p>Autism-friendly villa listings — image-optimized, mobile-first frontend components.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">Accessibility</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap">
+    <div class="section-head">
+      <p class="stamp">10:45 — STACK</p>
+      <h2>What I work with</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h4>Frontend / Mobile</h4>
+        <div class="tags">
+          <span class="tag">React.js</span><span class="tag">Redux Toolkit</span><span class="tag">Flutter</span>
+          <span class="tag">HTML5 / CSS3 / SCSS</span><span class="tag">Bootstrap</span><span class="tag">WCAG Accessibility</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Backend / Data</h4>
+        <div class="tags">
+          <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PHP (Laravel, Filament)</span>
+          <span class="tag">MongoDB</span><span class="tag">SQL Server</span><span class="tag">JWT Auth</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools / Workflow</h4>
+        <div class="tags">
+          <span class="tag">Git / GitHub</span><span class="tag">Postman / Insomnia</span><span class="tag">Agile / Scrum</span>
+          <span class="tag">GitHub Copilot</span><span class="tag">Claude</span><span class="tag">Figma AI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="wrap">
+    <div class="section-head">
+      <p class="stamp">11:20 — EXPERIENCE</p>
+      <h2>Where I've built this</h2>
+    </div>
+    <div class="exp-card">
+      <div class="exp-top">
+        <h3>Full Stack Developer — Able Aura Technologies</h3>
+        <span>2023 — PRESENT · CHENNAI</span>
+      </div>
+      <ul>
+        <li>Built reusable React components with Hooks, cutting code duplication by <b style="color:var(--ink); font-weight:500;">30%</b>.</li>
+        <li>Integrated RESTful APIs and managed JWT-based authentication for secure, real-time operations.</li>
+        <li>Optimized performance with code splitting and lazy loading for low-bandwidth environments.</li>
+        <li>Delivered a Flutter employee management app with a Laravel (Filament) backend, end-to-end to Play Store.</li>
+        <li>Currently extending the HRMS from attendance tracking into a full payroll platform.</li>
+        <li>Contributed across Agile sprints — planning, reviews, delivery — using AI tools to speed up development without cutting corners.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="wrap contact">
+    <p class="stamp">12:00 — GET IN TOUCH</p>
+    <h2>Have something to build? Let's talk.</h2>
+    <p>Open to full-time roles and interesting problems — especially where accessibility and real-world impact matter.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:smanikumar95@gmail.com">smanikumar95@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/smanikumar1995" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://www.instagram.com/manikumarsrinivasan/" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-row">
+    <span class="foot-note">MKS.dev — Chennai, IN</span>
+    <ul class="foot-links">
+      <li><a href="mailto:smanikumar95@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/smanikumar1995" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/manikumarsrinivasan/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="resume.pdf" target="_blank" rel="noopener">Résumé</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const navlinks = document.getElementById('navlinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Live check-in style clock in hero stamp
+  function pad(n){ return n.toString().padStart(2,'0'); }
+  function tick(){
+    const d = new Date();
+    document.getElementById('clockStamp').textContent =
+      `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())} — CHENNAI, IN`;
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
